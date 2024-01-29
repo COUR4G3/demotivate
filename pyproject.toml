@@ -1,0 +1,61 @@
+[project]
+name = "demotivate"
+description = "A simple script to print random demotivations."
+readme = "README.md"
+license = { text = "WTFPLv2" }
+authors = [{name = "Michael de Villiers", email = "michael@devilears.co.za"},]
+maintainers = [{name = "Michael de Villiers", email = "michael@devilears.co.za"},]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Topic :: Utilities",
+]
+dynamic = ["version"]
+requires-python = ">= 3.8"
+dependencies = [
+    "click ~= 8.1.7",
+]
+
+[project.scripts]
+demotivate = "demotivate:main"
+
+[project.urls]
+"Source Code" = "https://github.com/COUR4G3/demotivate/"
+"Issue Tracker" = "https://github.com/COUR4G3/demotivate/"
+
+[project.optional-dependencies]
+dev = [
+    "bandit",
+    "black",
+    "flake8",
+    "isort",
+    "pre_commit ~= 2.21.0",
+    "pydocstyle",
+]
+
+[build-system]
+requires = ["setuptools >= 64.0", "setuptools_scm[toml] >= 6.2", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+force-exclude = '''
+(
+  /venv/
+)
+'''
+line-length = 88
+target-version = ['py39']
+
+[tool.isort]
+profile = 'black'
+lines_between_types = 1
+combine_as_imports = true
+known_first_party = ['demotivate', 'tests']
+
+[tool.setuptools]
+py-modules = ["demotivate"]
+
+[tool.setuptools_scm]
